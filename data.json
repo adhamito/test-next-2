@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "gender":"cake",
+        "name": "Chocolate Cake",
+        "price": 1000,
+        "quantity": 0,
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Desserts.jpg/1200px-Desserts.jpg"
+
+    },
+    {
+        "id": 2,
+        "gender":"waffle",
+        "name": "Chocolate Waffle",
+        "price": 658,
+        "quantity": 0,
+        "src": "https://preppykitchen.com/wp-content/uploads/2023/10/Waffle-Recipe-Recipe-Card-500x375.jpg"
+    },
+    {
+        "id": 3,
+        "gender":"briwa",
+        "name": "briwa",
+        "price": 777,
+        "quantity": 0,
+        "src": "https://i.ytimg.com/vi/KMFtR3ZSO08/maxresdefault.jpg"
+    },
+    {
+        "id": 4,
+        "gender":"cake",
+        "name": "Chocolate Cake",
+        "price": 1000,
+        "quantity": 0,
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Desserts.jpg/1200px-Desserts.jpg"
+
+    },
+    {
+        "id": 5,
+        "gender":"waffle",
+        "name": "Chocolate Waffle",
+        "price": 658,
+        "quantity": 0,
+        "src": "https://preppykitchen.com/wp-content/uploads/2023/10/Waffle-Recipe-Recipe-Card-500x375.jpg"
+    },
+    {
+        "id": 6,
+        "gender":"briwa",
+        "name": "briwa",
+        "price": 777,
+        "quantity": 0,
+        "src": "https://i.ytimg.com/vi/KMFtR3ZSO08/maxresdefault.jpg"
+    }
+
+
+]
