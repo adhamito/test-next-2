@@ -1,23 +1,35 @@
 
 
-import data from "./data.json";
 
 export function getDesserts() {
-  return data;
+    try {
+        const storedDesserts = localStorage.getItem('cartItems'); 
+        if (storedDesserts) {
+            return JSON.parse(storedDesserts); 
+        }
+        return []; 
+    } catch (error) {
+        console.error('Failed to retrieve cartItems from localStorage:', error);
+        return []; 
+    }
 }
 
 export function AddToCart(item) {
-  let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-  const existingItem = cart.find(cartItem => cartItem.id === item.id);
-
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    cart.push({ ...item, quantity: 1 });
+    let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+  
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+  
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+  
+    
+   
   }
-
-  localStorage.setItem('cartItems', JSON.stringify(cart));
-}
+  
 
 export function RemoveFromCart(itemId) {
   let cart = JSON.parse(localStorage.getItem('cartItems')) || [];

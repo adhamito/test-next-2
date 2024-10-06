@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-row justify-between m-6 w-full">
+    <div className="flex flex-row justify-between m-6 w-full px-6 py-4">
       <div>
         
         {isMobile ? <MobileCards /> : <Cards />} 

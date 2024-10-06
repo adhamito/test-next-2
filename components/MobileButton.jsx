@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect, use } from 'react';
 import { AddToCart, AddQuantity, RemoveQuantity } from '../Action'; 
+import { useRouter } from 'next/navigation';
 
 const MobileButton = ({ item }) => {
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(0); 
+  
 
   useEffect(() => {
     
@@ -22,12 +24,14 @@ const MobileButton = ({ item }) => {
     AddToCart(item);
     setIsInCart(true);
     setQuantity(1); 
+    
   };
 
   
   const addQuantity = () => {
     AddQuantity(item.id);
     setQuantity(prevQuantity => prevQuantity + 1);
+    
   };
 
 
@@ -35,6 +39,7 @@ const MobileButton = ({ item }) => {
     if (quantity > 1) {
       RemoveQuantity(item.id);
       setQuantity(prevQuantity => prevQuantity - 1);
+      
     } else {
       
       RemoveQuantity(item.id);
@@ -44,13 +49,14 @@ const MobileButton = ({ item }) => {
   };
 
   return (
-    <div className="bottom-4 relative left-5">
+    <div className="bottom-4 relative ">
       {isInCart ? (
        
-        <div className="bg-[#cb3a11] rounded-3xl text-white font-serif flex items-center w-36 flex-row justify-around">
+        <div className="bg-[#cb3a11] rounded-3xl
+         text-white font-serif flex items-center w-full flex-row justify-around">
           <button
             onClick={addQuantity}
-            className="text-xl border px-2 border-stone-200 rounded-full"
+            className="text-xl  border px-2 border-stone-200 rounded-full"
           >
             +
           </button>
@@ -68,10 +74,17 @@ const MobileButton = ({ item }) => {
           </button>
         </div>
       ) : (
-        // If item is not in cart, show the "Add to Cart" button
+        
         <button
           type="button"
-          className="bg-white text-black flex items-center justify-center hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium text-sm px-5 py-1 me-2 mb-2 dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:focus:ring-gray-500 rounded-3xl"
+          className="bg-white text-black flex 
+          items-center justify-center
+           hover:bg-gray-100 focus:outline-non
+           e focus:ring-4 focus:ring-gray-300 
+           font-medium text-sm px-5 py-3 me-2 mb-2
+            dark:bg-white dark:text-black dark:hover:bg-gray-200
+             dark:focus:ring-gray-500 rounded-3xl
+             w-36"
           onClick={addToCart}
         >
           <svg
