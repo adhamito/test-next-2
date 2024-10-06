@@ -10,7 +10,7 @@ const MobileCards = () => {
   const secondHalf = Dessert.slice(half);
 
   return (
-    <div className="flex justify-between space-x-4 p-4  rounded  gap-3 m-3">
+    <div className="flex justify-between space-x-4 p-4   rounded  gap-3 m-3">
       
       <div className="w-1/2 space-y-6 shadow-md rounded-lg bg-[#fcf8f5]">
       <h1 className="text-2xl font-bold text-black">Dessert</h1>
@@ -23,8 +23,7 @@ const MobileCards = () => {
               className="w-full h-32 object-cover rounded-lg"
             />
               <MobileButton className="absolute bottom-0 left-1/2 transform
-               -translate-x-1/2 translate-y-1/2  bg-orange-50 text-white py-2 px-4
-                rounded-full hover:bg-orange-600" key={item.id} item={item} />
+               -translate-x-1/2 translate-y-1/2  bg-orange-50 text-white py-2 px-4 rounded-full hover:bg-orange-600" key={item.id} item={item} />
             
             
             <div className="mt-2">
@@ -44,10 +43,7 @@ const MobileCards = () => {
               alt={item.name}
               className="w-full h-32 object-cover rounded-lg"
             />  
-        <MobileButton className="absolute bottom-0 left-1
-         transform -translate-x-1/2 translate-y-1/2 bg-orange-50
-          text-white py-2 px-4 rounded-full hover:bg-orange-600
-          w-36" key={item.id} item={item} />
+        <MobileButton className="absolute bottom-0 left-1 transform -translate-x-1/2 translate-y-1/2 bg-orange-50 text-white py-2 px-4 rounded-full hover:bg-orange-600" key={item.id} item={item} />
           <div className="mt-4">
             <h3 className="text-lg font-light text-gray-300">{item.gender}</h3>
             <h1 className="text-lg font-bold text-black">{item.name}</h1>

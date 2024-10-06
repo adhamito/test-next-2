@@ -1,86 +1,55 @@
-'use client';
+  'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
+import { AddToCart, AddQuantity, RemoveQuantity } from '../Action'; 
 
 const Button = ({ Dessert, openimage, isOpen }) => {
   const router = useRouter();
   const [quantity, setQuantity] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItem = cart.find(cartItem => cartItem.id === Dessert.id);
+    
+    if (existingItem) {
+      setIsInCart(true);
+      setQuantity(existingItem.quantity);
+    }
+  }, [Dessert.id]);
 
   const addToCart = () => {
-    const existingItemIndex = cartItems.findIndex(item => item.id === Dessert.id);
-    let updatedItems;
-
-    if (existingItemIndex > -1) {
-      updatedItems = [...cartItems];
-      updatedItems[existingItemIndex].quantity += 1;
-    } else {
-      updatedItems = [...cartItems, { ...Dessert, quantity: 1 }];
-    }
-
-    setCartItems(updatedItems);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-    }
-
-    setQuantity(prevQuantity => prevQuantity + 1);
-    openimage(Dessert.id); // Call to handleButtonClick in Cards component
+    AddToCart(Dessert);  
+    setIsInCart(true);
+    setQuantity(1);
+    openimage(Dessert.id); 
     router.refresh();
   };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedItems = localStorage.getItem('cartItems');
-      setCartItems(storedItems ? JSON.parse(storedItems) : []);
-    }
-  }, []);
-
   const addQuantity = () => {
-    const existingItemIndex = cartItems.findIndex(item => item.id === Dessert.id);
-    let updatedItems;
-
-    if (existingItemIndex > -1) {
-      updatedItems = [...cartItems];
-      updatedItems[existingItemIndex].quantity += 1;
-    } else {
-      updatedItems = [...cartItems, { ...Dessert, quantity: 1 }];
-    }
-
-    setCartItems(updatedItems);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-    }
-
+    AddQuantity(Dessert.id);  
     setQuantity(prevQuantity => prevQuantity + 1);
     openimage(Dessert.id); 
     router.refresh();
   };
 
   const lessQuantity = () => {
-    const existingItemIndex = cartItems.findIndex(item => item.id === Dessert.id);
-
-    if (existingItemIndex > -1) {
-      const updatedItems = [...cartItems];
-      updatedItems[existingItemIndex].quantity -= 1;
-
-      if (updatedItems[existingItemIndex].quantity === 0) {
-        updatedItems.splice(existingItemIndex, 1);
-      }
-
-      setCartItems(updatedItems);
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-      }
-
-      setQuantity(prevQuantity => Math.max(prevQuantity - 1, 0));
+    if (quantity > 1) {
+      RemoveQuantity(Dessert.id);  // Use Dessert.id
+      setQuantity(prevQuantity => prevQuantity - 1);
+    } else {
+      RemoveQuantity(Dessert.id);
+      setIsInCart(false);
+      setQuantity(0);
     }
+    router.refresh();
   };
 
   return (
     <div className='bottom-4 relative left-5'>
-      {isOpen ? ( 
+      {isInCart ? ( 
         <div className="bg-[#cb3a11] rounded-3xl text-white font-serif flex items-center w-36 flex-row justify-around">
           <button onClick={addQuantity} className="text-xl border px-2 border-stone-200 rounded-full">+</button>
           <input 

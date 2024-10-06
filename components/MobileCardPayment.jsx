@@ -21,7 +21,7 @@ const MobileCardPayment = () => {
     }, []);
 
     return (
-        <div className="bg-white rounded-lg shadow-xl flex flex-col w-[250px] p-6">
+        <div className="bg-white rounded-lg shadow-xl flex flex-col  p-6">
           
           
           <div className="mb-6 bg-[#fcf8f5 ] p-4 rounded-lg">
@@ -33,14 +33,14 @@ const MobileCardPayment = () => {
                   className="w-full h-full object-cover border border-orange-300 transition-transform hover:scale-105"
                 />
     
-                {/* Mobile Button */}
+               
                 <MobileButton 
                   className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors" 
                   key={desserts[0].id} 
                   item={desserts[0]} 
                 />
     
-                {/* Dessert Info */}
+                
                 <div className="text-left mt-2">
                   <h3 className="text-sm font-light text-gray-400">{desserts[0].gender}</h3>
                   <h1 className="text-base font-bold text-gray-800">{desserts[0].name}</h1>
@@ -74,7 +74,7 @@ const MobileCardPayment = () => {
               )}
             </div>
     
-            {/* Total Section */}
+           
             <div className="border-t pt-4 mt-4">
               <div className="flex justify-between items-center font-bold text-lg text-gray-800">
                 <p className='text-xs font-bold text-gray-400'>order Total</p>

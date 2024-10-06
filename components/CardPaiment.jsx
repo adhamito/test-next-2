@@ -77,7 +77,7 @@ const CardPayment = () => {
   } 
 
   return (
-    <div className='p-6 bg-[#ffffff] rounded-lg shadow-md mt-6 w-[470px] max-w-md md:max-w-lg lg:max-w-xl'>
+    <div className='p-6 bg-[#ffffff] rounded-lg shadow-md mt-6 w-[400px]  max-w-md md:max-w-lg lg:max-w-xl'>
       <h1 className='text-2xl font-bold text-left text-[#cb3a11]'>
         {cartItems.length === 0 
           ? 'Your cart is empty' 

@@ -1,35 +1,37 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'; // Import useState and useEffect
+import React, { useState, useEffect } from 'react'; 
 import Cards from "../components/Cards";
 import MobileCards from "../components/MobileCards"; 
 import CardPayment from "../components/CardPaiment"; 
 import MobileCardPayment from "../components/MobileCardPayment"; 
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // State for mobile detection
+  const [isMobile, setIsMobile] = useState(false); 
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); 
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize); 
+    handleResize(); // Check the window width initially
 
-    // Clean up the event listener on unmount
+    window.addEventListener('resize', handleResize); // Update on resize
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleResize); // Cleanup listener on unmount
     };
   }, []);
 
   return (
-    <div className="flex flex-row justify-between m-6 w-full px-6 py-4">
-      <div>
-        
+    <div className={`flex flex-row ${isMobile ? 'space-y-4' : 'flex-row justify-between space-x-6'} m-6 w-full px-6 py-4`}>
+      <div className={`${isMobile ? 'w-[500px]' : 'w-1/2'}`}> 
+        {/* Adjust width based on mobile state */}
         {isMobile ? <MobileCards /> : <Cards />} 
       </div>
-      <div>
-        {isMobile ? <MobileCardPayment /> : <CardPayment className="flex flex-row justify-between" />} {/* Render based on mobile state */}
+      <div className={`${isMobile ? 'w-[500px]' : 'w-1/2'}`}>
+        {isMobile ? <MobileCardPayment /> : <CardPayment />} 
+        
       </div>
     </div>
   );
