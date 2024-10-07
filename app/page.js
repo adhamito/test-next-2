@@ -1,38 +1,20 @@
-'use client';
-
-import React, { useState, useEffect } from 'react'; 
+import React from 'react'; 
 import Cards from "../components/Cards";
-import MobileCards from "../components/MobileCards"; 
 import CardPayment from "../components/CardPaiment"; 
-import MobileCardPayment from "../components/MobileCardPayment"; 
+
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false); 
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize(); // Check the window width initially
-
-    window.addEventListener('resize', handleResize); // Update on resize
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup listener on unmount
-    };
-  }, []);
-
-  return (
-    <div className={`flex flex-row ${isMobile ? 'space-y-4' : 'flex-row justify-between space-x-6'} m-6 w-full px-6 py-4`}>
-      <div className={`${isMobile ? 'w-[500px]' : 'w-1/2'}`}> 
-        {/* Adjust width based on mobile state */}
-        {isMobile ? <MobileCards /> : <Cards />} 
-      </div>
-      <div className={`${isMobile ? 'w-[500px]' : 'w-1/2'}`}>
-        {isMobile ? <MobileCardPayment /> : <CardPayment />} 
-        
-      </div>
+ return (
+  <div className="w-full flex flex-col md:flex-row m-6 justify-center md:items-start lg:items-start sm:items-center px-6 sm:bg-[#f0f0f0'] bg-#fcf8f5">
+    
+    <div className="flex flex-col md:flex-row md:w-full sm:w-full items-center sm:bg[#fcf8f5]"> 
+      <Cards />
     </div>
-  );
+    
+    <div className="md:w-1/2 sm:w-full flex justify-center">
+      <CardPayment />
+    </div>
+  </div>
+);
+
 }

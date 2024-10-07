@@ -10,7 +10,8 @@ const MobileCards = () => {
   const secondHalf = Dessert.slice(half);
 
   return (
-    <div className="flex justify-between space-x-4 p-4   rounded  gap-3 m-3">
+    <div className="flex justify-between space-x-4 p-4   
+    rounded  gap-3 m-3">
       
       <div className="w-1/2 space-y-6 shadow-md rounded-lg bg-[#fcf8f5]">
       <h1 className="text-2xl font-bold text-black">Dessert</h1>

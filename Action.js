@@ -24,9 +24,7 @@ export function AddToCart(item) {
       cart.push({ ...item, quantity: 1 });
     }
   
-    localStorage.setItem('cartItems', JSON.stringify(cart));
-  
-    
+    localStorage.setItem('cartItems', JSON.stringify(cart)); 
    
   }
   
